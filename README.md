@@ -1,3 +1,19 @@
+create table books(book_id serial primary_key,
+     title varchar(100),author varchar(100),
+     genre varchar(50),published_year int,
+     price numeric(10,2),stock int);
+
+create table customers(customer_id serial primary_key,
+     name varchar(100), email varchar(100)
+     ,phone varchar(15),city varchar(50)
+     country varchar(150));
+
+create table orders(order_id serial primary_key,
+    customer_id int references customers(customer_id),
+    book_id int references books(book_id),
+    order_date date, quantity int,
+    total_amount numeric(10,2));
+    
 1) retrieve all books in the 'Fiction' genre
    select *from books
    where genre='Fiction';
